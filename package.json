@@ -2,10 +2,10 @@
   "name": "hyperquity",
   "version": "1.0.0",
   "description": "Hyperquity ($HYPERQUITY) - Coins with a leveraged trade inside. Launch on Solana, bind to Hyperliquid perpetuals.",
+  "main": "index.html",
   "scripts": {
     "start": "serve .",
-    "dev": "serve .",
-    "build": "echo 'Static build ready'"
+    "dev": "serve ."
   },
   "keywords": [
     "hyperquity",

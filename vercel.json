@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "outputDirectory": ".",
   "rewrites": [
     { "source": "/explore", "destination": "/explore.html" },
     { "source": "/launch", "destination": "/launch.html" },
