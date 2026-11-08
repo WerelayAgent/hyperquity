@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hyperquity · Coins with a leveraged trade inside</title>
+  <meta name="description" content="Launch on Float and pick a perp on Hyperliquid: long or short, up to 20x. The coin's trading fees fund the position, and profit buys it back.">
+  <meta property="og:title" content="Hyperquity · Coins with a leveraged trade inside">
+  <meta property="og:description" content="Launch on Float and pick a perp on Hyperliquid: long or short, up to 20x. The coin's trading fees fund the position, and profit buys it back.">
+  <meta property="og:site_name" content="Hyperquity">
+  <meta property="og:url" content="https://hyperquity.fun">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@hyperquity">
+  <meta name="twitter:title" content="Hyperquity · Coins with a leveraged trade inside">
+  <meta name="twitter:description" content="Launch on Float and pick a perp on Hyperliquid: long or short, up to 20x. The coin's trading fees fund the position, and profit buys it back.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%2338bdf8'/></svg>">
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body class="min-h-screen flex flex-col bg-[#020713] text-[#f5f5f5]">
+  <header class="sticky top-0 z-40 border-b border-neutral-800/80 bg-[#020713]/85 backdrop-blur-md">
+  <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-4 sm:py-5">
+    <a class="flex shrink-0 cursor-pointer items-center gap-2.5 transition hover:opacity-75" href="/">
+      <svg aria-hidden="true" class="shrink-0" height="28" viewBox="0 0 100 100" width="28">
+        <defs>
+          <mask height="100" id="hq-cut-nav" maskUnits="userSpaceOnUse" width="100" x="0" y="0">
+            <rect fill="#fff" height="100" width="100"></rect>
+            <path d="M-4 52 C18 54 30 36 50 38 S80 22 104 12" fill="none" stroke="#000" stroke-linecap="round" stroke-width="7"></path>
+            <path d="M-4 72 C18 74 30 56 50 58 S80 42 104 32" fill="none" stroke="#000" stroke-linecap="round" stroke-width="7"></path>
+          </mask>
+        </defs>
+        <g mask="url(#hq-cut-nav)">
+          <circle cx="47" cy="47" fill="#38bdf8" r="41"></circle>
+          <path d="M70 70 L90 90" stroke="#38bdf8" stroke-linecap="round" stroke-width="13"></path>
+        </g>
+      </svg>
+      <span class="font-[family-name:var(--font-headline)] text-2xl font-bold uppercase tracking-[0.14em] text-neutral-50">
+        Hyperquity
+      </span>
+    </a>
+    <div class="ml-auto flex shrink-0 items-center gap-1 sm:gap-3">
+      <nav aria-label="Top" class="hidden items-center sm:flex gap-1">
+        <a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-neutral-300 hover:text-neutral-50" href="/explore">Explore</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-neutral-300 hover:text-neutral-50" href="/launch">Launch</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-neutral-300 hover:text-neutral-50" href="/stats">Stats</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-neutral-300 hover:text-neutral-50" href="/activity">Activity</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-neutral-300 hover:text-neutral-50" href="/docs">Docs</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-neutral-300 hover:text-neutral-50" href="/brand">Brand</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold text-neutral-300 transition hover:text-neutral-50" href="https://x.com/hyperquity" target="_blank" rel="noreferrer">Twitter</a>
+
+      </nav>
+      <button class="wallet-connect-btn h-9 cursor-pointer whitespace-nowrap rounded-full border border-neutral-700 bg-[#050f22] px-3.5 font-mono text-[12.8px] text-white transition hover:border-cyan-400 hover:bg-white/[0.05] flex items-center">
+        Connect wallet
+      </button>
+      <button id="mobile-menu-btn" class="sm:hidden p-2 text-neutral-400 hover:text-white" aria-label="Menu">
+        <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="sm:hidden hidden border-t border-neutral-800 bg-[#050f22] px-4 py-3 space-y-2">
+    <a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-neutral-50" href="/explore">Explore</a>
+<a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-neutral-50" href="/launch">Launch</a>
+<a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-neutral-50" href="/stats">Stats</a>
+<a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-neutral-50" href="/activity">Activity</a>
+<a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-neutral-50" href="/docs">Docs</a>
+<a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-neutral-50" href="/brand">Brand</a>
+<a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white" href="https://x.com/hyperquity" target="_blank">Twitter</a>
+
+  </div>
+</header>
+  
+  <main class="flex flex-1 flex-col pb-16">
+    <section class="relative -mb-16 flex flex-1 flex-col justify-center overflow-hidden"><div aria-hidden="true" class="pointer-events-none absolute left-1/2 top-[42%] h-[620px] w-[1100px] max-w-[160vw] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(closest-side,rgba(32,78,170,0.38),rgba(14,32,64,0.22)_45%,transparent_100%)]"></div><div aria-hidden="true" class="pointer-events-none absolute left-1/2 top-[46%] h-[380px] w-[min(980px,100vw)] -translate-x-1/2 -translate-y-1/2 overflow-hidden [mask-image:radial-gradient(50%_50%_at_50%_50%,#000_30%,transparent_100%)]"><svg class="absolute inset-0 h-full w-full" preserveaspectratio="none" viewbox="0 0 1000 300"><line stroke="#16294a" stroke-dasharray="2 6" vector-effect="non-scaling-stroke" x1="0" x2="1000" y1="60" y2="60"></line><line stroke="#16294a" stroke-dasharray="2 6" vector-effect="non-scaling-stroke" x1="0" x2="1000" y1="120" y2="120"></line><line stroke="#16294a" stroke-dasharray="2 6" vector-effect="non-scaling-stroke" x1="0" x2="1000" y1="180" y2="180"></line><line stroke="#16294a" stroke-dasharray="2 6" vector-effect="non-scaling-stroke" x1="0" x2="1000" y1="240" y2="240"></line></svg><div class="absolute inset-y-0 left-0 w-[200%] motion-safe:animate-[marquee_40s_linear_infinite]"><svg class="h-full w-full" preserveaspectratio="none" viewbox="0 0 2000 300"><defs><lineargradient id="hero-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#3d8bff" stop-opacity="0.10"></stop><stop offset="1" stop-color="#3d8bff" stop-opacity="0"></stop></lineargradient></defs><path d="M0.0 182.2 L8.3 193.0 L16.7 185.7 L25.0 189.7 L33.3 187.5 L41.7 188.5 L50.0 191.4 L58.3 189.3 L66.7 183.8 L75.0 186.8 L83.3 190.3 L91.7 186.7 L100.0 177.3 L108.3 180.6 L116.7 175.6 L125.0 179.7 L133.3 184.9 L141.7 183.7 L150.0 190.6 L158.3 193.3 L166.7 202.1 L175.0 203.3 L183.3 204.8 L191.7 191.9 L200.0 185.9 L208.3 183.5 L216.7 180.9 L225.0 173.2 L233.3 172.2 L241.7 172.4 L250.0 183.9 L258.3 177.7 L266.7 168.0 L275.0 161.5 L283.3 150.6 L291.7 144.8 L300.0 140.4 L308.3 134.1 L316.7 118.3 L325.0 121.2 L333.3 122.4 L341.7 129.4 L350.0 129.2 L358.3 130.3 L366.7 136.6 L375.0 147.2 L383.3 142.8 L391.7 145.4 L400.0 143.7 L408.3 146.4 L416.7 152.2 L425.0 155.2 L433.3 156.5 L441.7 156.6 L450.0 155.5 L458.3 157.7 L466.7 150.5 L475.0 144.2 L483.3 141.6 L491.7 139.1 L500.0 149.3 L508.3 152.3 L516.7 164.6 L525.0 164.1 L533.3 171.1 L541.7 176.3 L550.0 184.9 L558.3 175.5 L566.7 179.2 L575.0 181.5 L583.3 185.7 L591.7 192.1 L600.0 194.9 L608.3 199.3 L616.7 205.1 L625.0 219.7 L633.3 214.5 L641.7 215.1 L650.0 203.9 L658.3 194.9 L666.7 193.4 L675.0 184.2 L683.3 167.5 L691.7 166.5 L700.0 163.4 L708.3 164.9 L716.7 164.3 L725.0 160.6 L733.3 157.8 L741.7 158.0 L750.0 162.3 L758.3 153.8 L766.7 156.9 L775.0 160.3 L783.3 163.9 L791.7 167.2 L800.0 171.6 L808.3 156.4 L816.7 153.9 L825.0 153.5 L833.3 145.4 L841.7 144.6 L850.0 130.5 L858.3 126.4 L866.7 135.5 L875.0 138.0 L883.3 133.1 L891.7 135.7 L900.0 137.0 L908.3 138.3 L916.7 130.4 L925.0 133.1 L933.3 118.6 L941.7 120.5 L950.0 129.3 L958.3 136.2 L966.7 145.6 L975.0 159.6 L983.3 164.3 L991.7 186.2 L1000.0 182.2 L1008.3 193.0 L1016.7 185.7 L1025.0 189.7 L1033.3 187.5 L1041.7 188.5 L1050.0 191.4 L1058.3 189.3 L1066.7 183.8 L1075.0 186.8 L1083.3 190.3 L1091.7 186.7 L1100.0 177.3 L1108.3 180.6 L1116.7 175.6 L1125.0 179.7 L1133.3 184.9 L1141.7 183.7 L1150.0 190.6 L1158.3 193.3 L1166.7 202.1 L1175.0 203.3 L1183.3 204.8 L1191.7 191.9 L1200.0 185.9 L1208.3 183.5 L1216.7 180.9 L1225.0 173.2 L1233.3 172.2 L1241.7 172.4 L1250.0 183.9 L1258.3 177.7 L1266.7 168.0 L1275.0 161.5 L1283.3 150.6 L1291.7 144.8 L1300.0 140.4 L1308.3 134.1 L1316.7 118.3 L1325.0 121.2 L1333.3 122.4 L1341.7 129.4 L1350.0 129.2 L1358.3 130.3 L1366.7 136.6 L1375.0 147.2 L1383.3 142.8 L1391.7 145.4 L1400.0 143.7 L1408.3 146.4 L1416.7 152.2 L1425.0 155.2 L1433.3 156.5 L1441.7 156.6 L1450.0 155.5 L1458.3 157.7 L1466.7 150.5 L1475.0 144.2 L1483.3 141.6 L1491.7 139.1 L1500.0 149.3 L1508.3 152.3 L1516.7 164.6 L1525.0 164.1 L1533.3 171.1 L1541.7 176.3 L1550.0 184.9 L1558.3 175.5 L1566.7 179.2 L1575.0 181.5 L1583.3 185.7 L1591.7 192.1 L1600.0 194.9 L1608.3 199.3 L1616.7 205.1 L1625.0 219.7 L1633.3 214.5 L1641.7 215.1 L1650.0 203.9 L1658.3 194.9 L1666.7 193.4 L1675.0 184.2 L1683.3 167.5 L1691.7 166.5 L1700.0 163.4 L1708.3 164.9 L1716.7 164.3 L1725.0 160.6 L1733.3 157.8 L1741.7 158.0 L1750.0 162.3 L1758.3 153.8 L1766.7 156.9 L1775.0 160.3 L1783.3 163.9 L1791.7 167.2 L1800.0 171.6 L1808.3 156.4 L1816.7 153.9 L1825.0 153.5 L1833.3 145.4 L1841.7 144.6 L1850.0 130.5 L1858.3 126.4 L1866.7 135.5 L1875.0 138.0 L1883.3 133.1 L1891.7 135.7 L1900.0 137.0 L1908.3 138.3 L1916.7 130.4 L1925.0 133.1 L1933.3 118.6 L1941.7 120.5 L1950.0 129.3 L1958.3 136.2 L1966.7 145.6 L1975.0 159.6 L1983.3 164.3 L1991.7 186.2 L2000.0 182.2 L2000 300 L0 300 Z" fill="url(#hero-fill)"></path><path d="M0.0 182.2 L8.3 193.0 L16.7 185.7 L25.0 189.7 L33.3 187.5 L41.7 188.5 L50.0 191.4 L58.3 189.3 L66.7 183.8 L75.0 186.8 L83.3 190.3 L91.7 186.7 L100.0 177.3 L108.3 180.6 L116.7 175.6 L125.0 179.7 L133.3 184.9 L141.7 183.7 L150.0 190.6 L158.3 193.3 L166.7 202.1 L175.0 203.3 L183.3 204.8 L191.7 191.9 L200.0 185.9 L208.3 183.5 L216.7 180.9 L225.0 173.2 L233.3 172.2 L241.7 172.4 L250.0 183.9 L258.3 177.7 L266.7 168.0 L275.0 161.5 L283.3 150.6 L291.7 144.8 L300.0 140.4 L308.3 134.1 L316.7 118.3 L325.0 121.2 L333.3 122.4 L341.7 129.4 L350.0 129.2 L358.3 130.3 L366.7 136.6 L375.0 147.2 L383.3 142.8 L391.7 145.4 L400.0 143.7 L408.3 146.4 L416.7 152.2 L425.0 155.2 L433.3 156.5 L441.7 156.6 L450.0 155.5 L458.3 157.7 L466.7 150.5 L475.0 144.2 L483.3 141.6 L491.7 139.1 L500.0 149.3 L508.3 152.3 L516.7 164.6 L525.0 164.1 L533.3 171.1 L541.7 176.3 L550.0 184.9 L558.3 175.5 L566.7 179.2 L575.0 181.5 L583.3 185.7 L591.7 192.1 L600.0 194.9 L608.3 199.3 L616.7 205.1 L625.0 219.7 L633.3 214.5 L641.7 215.1 L650.0 203.9 L658.3 194.9 L666.7 193.4 L675.0 184.2 L683.3 167.5 L691.7 166.5 L700.0 163.4 L708.3 164.9 L716.7 164.3 L725.0 160.6 L733.3 157.8 L741.7 158.0 L750.0 162.3 L758.3 153.8 L766.7 156.9 L775.0 160.3 L783.3 163.9 L791.7 167.2 L800.0 171.6 L808.3 156.4 L816.7 153.9 L825.0 153.5 L833.3 145.4 L841.7 144.6 L850.0 130.5 L858.3 126.4 L866.7 135.5 L875.0 138.0 L883.3 133.1 L891.7 135.7 L900.0 137.0 L908.3 138.3 L916.7 130.4 L925.0 133.1 L933.3 118.6 L941.7 120.5 L950.0 129.3 L958.3 136.2 L966.7 145.6 L975.0 159.6 L983.3 164.3 L991.7 186.2 L1000.0 182.2 L1008.3 193.0 L1016.7 185.7 L1025.0 189.7 L1033.3 187.5 L1041.7 188.5 L1050.0 191.4 L1058.3 189.3 L1066.7 183.8 L1075.0 186.8 L1083.3 190.3 L1091.7 186.7 L1100.0 177.3 L1108.3 180.6 L1116.7 175.6 L1125.0 179.7 L1133.3 184.9 L1141.7 183.7 L1150.0 190.6 L1158.3 193.3 L1166.7 202.1 L1175.0 203.3 L1183.3 204.8 L1191.7 191.9 L1200.0 185.9 L1208.3 183.5 L1216.7 180.9 L1225.0 173.2 L1233.3 172.2 L1241.7 172.4 L1250.0 183.9 L1258.3 177.7 L1266.7 168.0 L1275.0 161.5 L1283.3 150.6 L1291.7 144.8 L1300.0 140.4 L1308.3 134.1 L1316.7 118.3 L1325.0 121.2 L1333.3 122.4 L1341.7 129.4 L1350.0 129.2 L1358.3 130.3 L1366.7 136.6 L1375.0 147.2 L1383.3 142.8 L1391.7 145.4 L1400.0 143.7 L1408.3 146.4 L1416.7 152.2 L1425.0 155.2 L1433.3 156.5 L1441.7 156.6 L1450.0 155.5 L1458.3 157.7 L1466.7 150.5 L1475.0 144.2 L1483.3 141.6 L1491.7 139.1 L1500.0 149.3 L1508.3 152.3 L1516.7 164.6 L1525.0 164.1 L1533.3 171.1 L1541.7 176.3 L1550.0 184.9 L1558.3 175.5 L1566.7 179.2 L1575.0 181.5 L1583.3 185.7 L1591.7 192.1 L1600.0 194.9 L1608.3 199.3 L1616.7 205.1 L1625.0 219.7 L1633.3 214.5 L1641.7 215.1 L1650.0 203.9 L1658.3 194.9 L1666.7 193.4 L1675.0 184.2 L1683.3 167.5 L1691.7 166.5 L1700.0 163.4 L1708.3 164.9 L1716.7 164.3 L1725.0 160.6 L1733.3 157.8 L1741.7 158.0 L1750.0 162.3 L1758.3 153.8 L1766.7 156.9 L1775.0 160.3 L1783.3 163.9 L1791.7 167.2 L1800.0 171.6 L1808.3 156.4 L1816.7 153.9 L1825.0 153.5 L1833.3 145.4 L1841.7 144.6 L1850.0 130.5 L1858.3 126.4 L1866.7 135.5 L1875.0 138.0 L1883.3 133.1 L1891.7 135.7 L1900.0 137.0 L1908.3 138.3 L1916.7 130.4 L1925.0 133.1 L1933.3 118.6 L1941.7 120.5 L1950.0 129.3 L1958.3 136.2 L1966.7 145.6 L1975.0 159.6 L1983.3 164.3 L1991.7 186.2 L2000.0 182.2" fill="none" stroke="#3d8bff" stroke-linejoin="round" stroke-opacity="0.4" stroke-width="1.25" vector-effect="non-scaling-stroke"></path></svg></div></div><div class="relative mx-auto flex w-full max-w-3xl flex-col items-center px-6 pb-10 pt-12 text-center"><h1 aria-label="Hyperquity" class="relative flex items-center justify-center font-[family-name:var(--font-headline)] text-[13vw] font-bold leading-none tracking-[-0.03em] text-neutral-50 sm:text-[7.5rem] md:text-[8.5rem]">
+   <span aria-hidden="true">HYPER</span>
+   <svg aria-hidden="true" class="shrink-0 mx-[0.03em] h-[0.8em] w-[0.8em]" height="160" viewBox="0 0 100 100" width="160">
+    <defs>
+     <mask height="100" id="hq-cut-hero" maskUnits="userSpaceOnUse" width="100" x="0" y="0">
+      <rect fill="#fff" height="100" width="100"></rect>
+      <path d="M-4 52 C18 54 30 36 50 38 S80 22 104 12" fill="none" stroke="#000" stroke-linecap="round" stroke-width="7"></path>
+      <path d="M-4 72 C18 74 30 56 50 58 S80 42 104 32" fill="none" stroke="#000" stroke-linecap="round" stroke-width="7"></path>
+     </mask>
+    </defs>
+    <g mask="url(#hq-cut-hero)">
+     <circle cx="47" cy="47" fill="#38bdf8" r="41"></circle>
+     <path d="M70 70 L90 90" stroke="#38bdf8" stroke-linecap="round" stroke-width="13"></path>
+    </g>
+   </svg>
+   <span aria-hidden="true">UITY</span>
+  </h1><p class="mt-8 font-[family-name:var(--font-headline)] text-[30px] font-bold leading-[1.12] tracking-[-0.02em] text-neutral-50 sm:text-[44px]">Coins with a leveraged trade inside.</p><p class="mt-4 max-w-lg text-[15px] leading-relaxed text-neutral-300">Launch on Float and pick a perp on Hyperliquid: long or short, up to 20x. The coin's trading fees fund the position, and profit buys it back.</p><div class="mt-8 flex flex-wrap items-center justify-center gap-4 w-full max-w-md">
+      <a class="flex-1 h-12 flex items-center justify-center rounded-xl bg-cyan-400 text-sm font-bold uppercase tracking-[0.15em] text-[#020713] shadow-[0_0_40px_-8px_rgba(56,189,248,0.45)] transition hover:bg-cyan-300" href="/launch">
+        Launch a coin
+      </a>
+      <a class="flex-1 h-12 flex items-center justify-center rounded-xl border border-neutral-700 bg-[#050f22] text-sm font-bold uppercase tracking-[0.15em] text-neutral-200 transition hover:border-neutral-500 hover:text-white" href="/explore">
+        Explore coins
+      </a>
+    </div></div><div class="relative mx-auto w-full max-w-3xl px-6 pb-4"><!--$?--><div aria-hidden="true" class="flex w-full justify-center overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]"><div class="flex shrink-0 items-center gap-2.5 px-6 py-2"><span class="size-[18px] animate-pulse rounded-full bg-neutral-800"></span><span class="h-3 w-9 animate-pulse rounded bg-neutral-800"></span><span class="h-3 w-16 animate-pulse rounded bg-neutral-800/70"></span><span class="h-3 w-11 animate-pulse rounded bg-neutral-800/70"></span><span class="h-4 w-7 animate-pulse rounded-md border border-neutral-800"></span></div><div class="flex shrink-0 items-center gap-2.5 px-6 py-2"><span class="size-[18px] animate-pulse rounded-full bg-neutral-800"></span><span class="h-3 w-9 animate-pulse rounded bg-neutral-800"></span><span class="h-3 w-16 animate-pulse rounded bg-neutral-800/70"></span><span class="h-3 w-11 animate-pulse rounded bg-neutral-800/70"></span><span class="h-4 w-7 animate-pulse rounded-md border border-neutral-800"></span></div><div class="flex shrink-0 items-center gap-2.5 px-6 py-2"><span class="size-[18px] animate-pulse rounded-full bg-neutral-800"></span><span class="h-3 w-9 animate-pulse rounded bg-neutral-800"></span><span class="h-3 w-16 animate-pulse rounded bg-neutral-800/70"></span><span class="h-3 w-11 animate-pulse rounded bg-neutral-800/70"></span><span class="h-4 w-7 animate-pulse rounded-md border border-neutral-800"></span></div><div class="flex shrink-0 items-center gap-2.5 px-6 py-2"><span class="size-[18px] animate-pulse rounded-full bg-neutral-800"></span><span class="h-3 w-9 animate-pulse rounded bg-neutral-800"></span><span class="h-3 w-16 animate-pulse rounded bg-neutral-800/70"></span><span class="h-3 w-11 animate-pulse rounded bg-neutral-800/70"></span><span class="h-4 w-7 animate-pulse rounded-md border border-neutral-800"></span></div></div><!--/$--></div></section>
+    <div class="relative w-full overflow-hidden border-y border-neutral-800/80 bg-[#050f22]/50 py-3 backdrop-blur-sm">
+      <div class="animate-marquee flex items-center gap-8 text-xs font-mono">
+        <div class="flex items-center gap-2"><span class="font-bold text-white">BTC-PERP</span><span class="text-neutral-400">$92,450.00</span><span class="text-emerald-400">+3.8%</span><span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px]">20x</span></div>
+        <div class="flex items-center gap-2"><span class="font-bold text-white">ETH-PERP</span><span class="text-neutral-400">$3,420.50</span><span class="text-emerald-400">+2.4%</span><span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px]">10x</span></div>
+        <div class="flex items-center gap-2"><span class="font-bold text-white">SOL-PERP</span><span class="text-neutral-400">$214.80</span><span class="text-emerald-400">+5.1%</span><span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px]">20x</span></div>
+        <div class="flex items-center gap-2"><span class="font-bold text-cyan-400">HYPE-PERP</span><span class="text-neutral-400">$28.45</span><span class="text-emerald-400">+12.4%</span><span class="px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-400 text-[10px]">10x</span></div>
+        <div class="flex items-center gap-2"><span class="font-bold text-white">XRP-PERP</span><span class="text-neutral-400">$2.42</span><span class="text-rose-400">-1.2%</span><span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-400 text-[10px]">5x</span></div>
+        <div class="flex items-center gap-2"><span class="font-bold text-white">DOGE-PERP</span><span class="text-neutral-400">$0.384</span><span class="text-emerald-400">+6.8%</span><span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px]">20x</span></div>
+        <div class="flex items-center gap-2"><span class="font-bold text-white">SUI-PERP</span><span class="text-neutral-400">$3.65</span><span class="text-emerald-400">+8.9%</span><span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px]">10x</span></div>
+        <div class="flex items-center gap-2"><span class="font-bold text-white">AVAX-PERP</span><span class="text-neutral-400">$34.80</span><span class="text-emerald-400">+1.5%</span><span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px]">5x</span></div>
+        <div class="flex items-center gap-2"><span class="font-bold text-white">LINK-PERP</span><span class="text-neutral-400">$18.90</span><span class="text-emerald-400">+4.2%</span><span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px]">10x</span></div>
+        <!-- Duplicate for continuous loop -->
+        <div class="flex items-center gap-2"><span class="font-bold text-white">BTC-PERP</span><span class="text-neutral-400">$92,450.00</span><span class="text-emerald-400">+3.8%</span><span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px]">20x</span></div>
+        <div class="flex items-center gap-2"><span class="font-bold text-white">ETH-PERP</span><span class="text-neutral-400">$3,420.50</span><span class="text-emerald-400">+2.4%</span><span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px]">10x</span></div>
+        <div class="flex items-center gap-2"><span class="font-bold text-white">SOL-PERP</span><span class="text-neutral-400">$214.80</span><span class="text-emerald-400">+5.1%</span><span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px]">20x</span></div>
+        <div class="flex items-center gap-2"><span class="font-bold text-cyan-400">HYPE-PERP</span><span class="text-neutral-400">$28.45</span><span class="text-emerald-400">+12.4%</span><span class="px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-400 text-[10px]">10x</span></div>
+      </div>
+    </div>
+    
+    <!-- How it works: The Fee Loop -->
+    <section class="mx-auto w-full max-w-6xl px-6 pt-24 pb-12">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">Architecture</p>
+        <h2 class="mt-2 font-[family-name:var(--font-headline)] text-3xl sm:text-4xl font-bold text-neutral-50">
+          The Automated Fee Loop
+        </h2>
+        <p class="mt-3 text-sm text-neutral-400">
+          How every token swap on Solana feeds a high-leverage perpetual on Hyperliquid, and turns winning trades into deflationary buybacks.
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="relative rounded-2xl border border-neutral-800 bg-[#050f22] p-6 flex flex-col justify-between hover:border-neutral-700 transition">
+          <div class="size-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center font-mono font-bold text-cyan-400 text-sm mb-4">
+            01
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-neutral-100">Launch on Solana</h3>
+            <p class="mt-2 text-sm text-neutral-400 leading-relaxed">
+              Launch your token on Float/Raydium paired with SOL or USDC. Bind it permanently to any Hyperliquid perp (BTC, ETH, SOL, HYPE, etc.) at 1x to 20x Long or Short.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-neutral-800/80 font-mono text-xs text-neutral-500">
+            Fixed at token genesis
+          </div>
+        </div>
+
+        <div class="relative rounded-2xl border border-neutral-800 bg-[#050f22] p-6 flex flex-col justify-between hover:border-neutral-700 transition">
+          <div class="size-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center font-mono font-bold text-blue-400 text-sm mb-4">
+            02
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-neutral-100">Trading Fees Feed Margin</h3>
+            <p class="mt-2 text-sm text-neutral-400 leading-relaxed">
+              50% of all swap fees on Solana are claimed in real-time and bridged across to Hyperliquid isolated margin. As volume grows, margin grows.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-neutral-800/80 font-mono text-xs text-neutral-500">
+            Autonomous API execution
+          </div>
+        </div>
+
+        <div class="relative rounded-2xl border border-neutral-800 bg-[#050f22] p-6 flex flex-col justify-between hover:border-neutral-700 transition">
+          <div class="size-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center font-mono font-bold text-emerald-400 text-sm mb-4">
+            03
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-neutral-100">+20% Buys Back & Burns</h3>
+            <p class="mt-2 text-sm text-neutral-400 leading-relaxed">
+              When the perpetual reaches +20% unrealized PnL, the engine takes profit, bridges USDC back to Solana, purchases the native token from the pool, and permanently burns it.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-neutral-800/80 font-mono text-xs text-neutral-500">
+            Continuous deflation
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Protocol Metrics Counter -->
+    <section class="mx-auto w-full max-w-6xl px-6 py-12">
+      <div class="rounded-2xl border border-neutral-800 bg-[#050f22] p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <div class="text-xs font-mono uppercase tracking-wider text-neutral-500">Total Volume</div>
+          <div class="mt-1 text-2xl sm:text-3xl font-bold text-white font-[family-name:var(--font-headline)]">$4,829,150</div>
+        </div>
+        <div>
+          <div class="text-xs font-mono uppercase tracking-wider text-neutral-500">Fees Bridged</div>
+          <div class="mt-1 text-2xl sm:text-3xl font-bold text-cyan-400 font-[family-name:var(--font-headline)]">$148,320</div>
+        </div>
+        <div>
+          <div class="text-xs font-mono uppercase tracking-wider text-neutral-500">Bought & Burned</div>
+          <div class="mt-1 text-2xl sm:text-3xl font-bold text-emerald-400 font-[family-name:var(--font-headline)]">$92,440</div>
+        </div>
+        <div>
+          <div class="text-xs font-mono uppercase tracking-wider text-neutral-500">Win Rate</div>
+          <div class="mt-1 text-2xl sm:text-3xl font-bold text-white font-[family-name:var(--font-headline)]">68.4%</div>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+
+  <footer class="mt-auto border-t border-neutral-800/80 bg-[#020713] py-10 text-neutral-400">
+  <div class="mx-auto max-w-6xl px-4 flex flex-col sm:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <svg aria-hidden="true" class="shrink-0" height="22" viewBox="0 0 100 100" width="22">
+        <g mask="url(#hq-cut-nav)">
+          <circle cx="47" cy="47" fill="#38bdf8" r="41"></circle>
+          <path d="M70 70 L90 90" stroke="#38bdf8" stroke-linecap="round" stroke-width="13"></path>
+        </g>
+      </svg>
+      <span class="font-mono text-sm uppercase tracking-wider text-neutral-200">Hyperquity</span>
+      <span class="text-xs text-neutral-500">· Coins with a leveraged trade inside</span>
+    </div>
+    <div class="flex flex-wrap items-center gap-6 text-xs font-mono">
+      <a href="/explore" class="hover:text-white transition">Explore</a>
+      <a href="/launch" class="hover:text-white transition">Launch</a>
+      <a href="/stats" class="hover:text-white transition">Stats</a>
+      <a href="/activity" class="hover:text-white transition">Activity</a>
+      <a href="/docs" class="hover:text-white transition">Docs</a>
+      <a href="/brand" class="hover:text-white transition">Brand</a>
+      <a href="https://x.com/hyperquity" target="_blank" class="hover:text-white transition">@hyperquity</a>
+    </div>
+  </div>
+</footer>
+
+  <script src="/assets/js/wallet.js"></script>
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

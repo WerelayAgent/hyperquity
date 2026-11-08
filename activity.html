@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Activity · Hyperquity</title>
+  <meta name="description" content="Live ledger of every fee claim, bridge, position change, buyback and burn across all Hyperquity tokens as it happens.">
+  <meta property="og:title" content="Activity · Hyperquity">
+  <meta property="og:description" content="Live ledger of every fee claim, bridge, position change, buyback and burn across all Hyperquity tokens as it happens.">
+  <meta property="og:site_name" content="Hyperquity">
+  <meta property="og:url" content="https://hyperquity.fun">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@hyperquity">
+  <meta name="twitter:title" content="Activity · Hyperquity">
+  <meta name="twitter:description" content="Live ledger of every fee claim, bridge, position change, buyback and burn across all Hyperquity tokens as it happens.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%2338bdf8'/></svg>">
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body class="min-h-screen flex flex-col bg-[#020713] text-[#f5f5f5]">
+  <header class="sticky top-0 z-40 border-b border-neutral-800/80 bg-[#020713]/85 backdrop-blur-md">
+  <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-4 sm:py-5">
+    <a class="flex shrink-0 cursor-pointer items-center gap-2.5 transition hover:opacity-75" href="/">
+      <svg aria-hidden="true" class="shrink-0" height="28" viewBox="0 0 100 100" width="28">
+        <defs>
+          <mask height="100" id="hq-cut-nav" maskUnits="userSpaceOnUse" width="100" x="0" y="0">
+            <rect fill="#fff" height="100" width="100"></rect>
+            <path d="M-4 52 C18 54 30 36 50 38 S80 22 104 12" fill="none" stroke="#000" stroke-linecap="round" stroke-width="7"></path>
+            <path d="M-4 72 C18 74 30 56 50 58 S80 42 104 32" fill="none" stroke="#000" stroke-linecap="round" stroke-width="7"></path>
+          </mask>
+        </defs>
+        <g mask="url(#hq-cut-nav)">
+          <circle cx="47" cy="47" fill="#38bdf8" r="41"></circle>
+          <path d="M70 70 L90 90" stroke="#38bdf8" stroke-linecap="round" stroke-width="13"></path>
+        </g>
+      </svg>
+      <span class="font-[family-name:var(--font-headline)] text-2xl font-bold uppercase tracking-[0.14em] text-neutral-50">
+        Hyperquity
+      </span>
+    </a>
+    <div class="ml-auto flex shrink-0 items-center gap-1 sm:gap-3">
+      <nav aria-label="Top" class="hidden items-center sm:flex gap-1">
+        <a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-neutral-300 hover:text-neutral-50" href="/explore">Explore</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-neutral-300 hover:text-neutral-50" href="/launch">Launch</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-neutral-300 hover:text-neutral-50" href="/stats">Stats</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-cyan-400 font-bold" href="/activity">Activity</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-neutral-300 hover:text-neutral-50" href="/docs">Docs</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-neutral-300 hover:text-neutral-50" href="/brand">Brand</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold text-neutral-300 transition hover:text-neutral-50" href="https://x.com/hyperquity" target="_blank" rel="noreferrer">Twitter</a>
+
+      </nav>
+      <button class="wallet-connect-btn h-9 cursor-pointer whitespace-nowrap rounded-full border border-neutral-700 bg-[#050f22] px-3.5 font-mono text-[12.8px] text-white transition hover:border-cyan-400 hover:bg-white/[0.05] flex items-center">
+        Connect wallet
+      </button>
+      <button id="mobile-menu-btn" class="sm:hidden p-2 text-neutral-400 hover:text-white" aria-label="Menu">
+        <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="sm:hidden hidden border-t border-neutral-800 bg-[#050f22] px-4 py-3 space-y-2">
+    <a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-neutral-50" href="/explore">Explore</a>
+<a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-neutral-50" href="/launch">Launch</a>
+<a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-neutral-50" href="/stats">Stats</a>
+<a class="block py-2 text-sm font-semibold text-cyan-400 font-bold" href="/activity">Activity</a>
+<a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-neutral-50" href="/docs">Docs</a>
+<a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-neutral-50" href="/brand">Brand</a>
+<a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white" href="https://x.com/hyperquity" target="_blank">Twitter</a>
+
+  </div>
+</header>
+  
+  <main class="flex flex-1 flex-col pb-16">
+    
+    <div class="mx-auto w-full max-w-6xl px-6 pt-8">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500">Activity</p>
+          <h1 class="mt-2 text-[34px] font-bold leading-none tracking-[-0.035em] text-neutral-50">
+            Everything the engine does
+          </h1>
+          <p class="mt-3 max-w-2xl text-sm text-neutral-400">
+            Every fee claim, bridge, position change, buyback and burn across all Hyperquity tokens, as it happens. Each row links to its transaction.
+          </p>
+        </div>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="mt-8 flex items-center gap-2 overflow-x-auto pb-1 font-mono text-xs">
+        <button class="activity-filter-tab px-4 py-2 rounded-full bg-white text-[#020713] font-semibold transition" data-filter="all">All Events</button>
+        <button class="activity-filter-tab px-4 py-2 rounded-full bg-[#09172e] text-neutral-300 hover:text-white transition" data-filter="buyback">Buyback & Burn</button>
+        <button class="activity-filter-tab px-4 py-2 rounded-full bg-[#09172e] text-neutral-300 hover:text-white transition" data-filter="bridge">Bridges to Hyperliquid</button>
+        <button class="activity-filter-tab px-4 py-2 rounded-full bg-[#09172e] text-neutral-300 hover:text-white transition" data-filter="claim">Fee Claims</button>
+      </div>
+
+      <!-- Activity Feed Rows -->
+      <div class="mt-6 space-y-3">
+        
+        <div class="activity-row flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-xl border border-neutral-800 bg-[#09172e] hover:border-neutral-700 transition gap-3" data-type="buyback">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-mono font-bold border bg-emerald-500/10 text-emerald-400 border-emerald-500/30">
+              BUYBACK & BURN
+            </span>
+            <div>
+              <div class="font-bold text-white text-sm flex items-center gap-2">
+                <span>$HYPERQUITY</span>
+                <span class="font-mono text-xs font-normal text-neutral-400">· 2 mins ago</span>
+              </div>
+              <p class="text-xs text-neutral-300 mt-0.5">Bought 52,140 HYPERQUITY from Raydium pool & burned permanently (+20% Perp Profit)</p>
+            </div>
+          </div>
+          <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto font-mono text-xs">
+            <span class="font-bold text-white">$4,280 USDC</span>
+            <span class="text-cyan-400 cursor-pointer hover:underline text-[11px]" data-copy="5KQx...9wZ1" title="Click to copy tx hash">
+              tx: 5KQx...9wZ1 ↗
+            </span>
+          </div>
+        </div>
+        
+        <div class="activity-row flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-xl border border-neutral-800 bg-[#09172e] hover:border-neutral-700 transition gap-3" data-type="bridge">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-mono font-bold border bg-cyan-500/10 text-cyan-400 border-cyan-500/30">
+              BRIDGE TO HYPERLIQUID
+            </span>
+            <div>
+              <div class="font-bold text-white text-sm flex items-center gap-2">
+                <span>$HSOL</span>
+                <span class="font-mono text-xs font-normal text-neutral-400">· 8 mins ago</span>
+              </div>
+              <p class="text-xs text-neutral-300 mt-0.5">Bridged swap fees from Solana to Hyperliquid isolated margin</p>
+            </div>
+          </div>
+          <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto font-mono text-xs">
+            <span class="font-bold text-white">$1,150 USDC</span>
+            <span class="text-cyan-400 cursor-pointer hover:underline text-[11px]" data-copy="3rLm...7aB2" title="Click to copy tx hash">
+              tx: 3rLm...7aB2 ↗
+            </span>
+          </div>
+        </div>
+        
+        <div class="activity-row flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-xl border border-neutral-800 bg-[#09172e] hover:border-neutral-700 transition gap-3" data-type="claim">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-mono font-bold border bg-blue-500/10 text-blue-400 border-blue-500/30">
+              FEE CLAIM
+            </span>
+            <div>
+              <div class="font-bold text-white text-sm flex items-center gap-2">
+                <span>$HCAT</span>
+                <span class="font-mono text-xs font-normal text-neutral-400">· 15 mins ago</span>
+              </div>
+              <p class="text-xs text-neutral-300 mt-0.5">Claimed Float pool trading fee allocation (50% share)</p>
+            </div>
+          </div>
+          <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto font-mono text-xs">
+            <span class="font-bold text-white">4.85 SOL</span>
+            <span class="text-cyan-400 cursor-pointer hover:underline text-[11px]" data-copy="8pQk...4xT9" title="Click to copy tx hash">
+              tx: 8pQk...4xT9 ↗
+            </span>
+          </div>
+        </div>
+        
+        <div class="activity-row flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-xl border border-neutral-800 bg-[#09172e] hover:border-neutral-700 transition gap-3" data-type="buyback">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-mono font-bold border bg-emerald-500/10 text-emerald-400 border-emerald-500/30">
+              BUYBACK & BURN
+            </span>
+            <div>
+              <div class="font-bold text-white text-sm flex items-center gap-2">
+                <span>$SFUD</span>
+                <span class="font-mono text-xs font-normal text-neutral-400">· 32 mins ago</span>
+              </div>
+              <p class="text-xs text-neutral-300 mt-0.5">Short ETH perpetual +20% TP reached: Repurchased 18,200 SFUD & burned</p>
+            </div>
+          </div>
+          <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto font-mono text-xs">
+            <span class="font-bold text-white">$840 USDC</span>
+            <span class="text-cyan-400 cursor-pointer hover:underline text-[11px]" data-copy="2vNx...1mQ6" title="Click to copy tx hash">
+              tx: 2vNx...1mQ6 ↗
+            </span>
+          </div>
+        </div>
+        
+        <div class="activity-row flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-xl border border-neutral-800 bg-[#09172e] hover:border-neutral-700 transition gap-3" data-type="bridge">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-mono font-bold border bg-cyan-500/10 text-cyan-400 border-cyan-500/30">
+              BRIDGE TO HYPERLIQUID
+            </span>
+            <div>
+              <div class="font-bold text-white text-sm flex items-center gap-2">
+                <span>$SBULL</span>
+                <span class="font-mono text-xs font-normal text-neutral-400">· 45 mins ago</span>
+              </div>
+              <p class="text-xs text-neutral-300 mt-0.5">Margin deposit to 15x SUI-PERP position</p>
+            </div>
+          </div>
+          <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto font-mono text-xs">
+            <span class="font-bold text-white">$2,400 USDC</span>
+            <span class="text-cyan-400 cursor-pointer hover:underline text-[11px]" data-copy="9wLk...3jR4" title="Click to copy tx hash">
+              tx: 9wLk...3jR4 ↗
+            </span>
+          </div>
+        </div>
+        
+        <div class="activity-row flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-xl border border-neutral-800 bg-[#09172e] hover:border-neutral-700 transition gap-3" data-type="claim">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-mono font-bold border bg-blue-500/10 text-blue-400 border-blue-500/30">
+              FEE CLAIM
+            </span>
+            <div>
+              <div class="font-bold text-white text-sm flex items-center gap-2">
+                <span>$HYPERQUITY</span>
+                <span class="font-mono text-xs font-normal text-neutral-400">· 1 hr ago</span>
+              </div>
+              <p class="text-xs text-neutral-300 mt-0.5">Swap fees accumulated across Raydium & Float pools</p>
+            </div>
+          </div>
+          <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto font-mono text-xs">
+            <span class="font-bold text-white">12.4 SOL</span>
+            <span class="text-cyan-400 cursor-pointer hover:underline text-[11px]" data-copy="7zPv...6tY8" title="Click to copy tx hash">
+              tx: 7zPv...6tY8 ↗
+            </span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  </main>
+
+  <footer class="mt-auto border-t border-neutral-800/80 bg-[#020713] py-10 text-neutral-400">
+  <div class="mx-auto max-w-6xl px-4 flex flex-col sm:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <svg aria-hidden="true" class="shrink-0" height="22" viewBox="0 0 100 100" width="22">
+        <g mask="url(#hq-cut-nav)">
+          <circle cx="47" cy="47" fill="#38bdf8" r="41"></circle>
+          <path d="M70 70 L90 90" stroke="#38bdf8" stroke-linecap="round" stroke-width="13"></path>
+        </g>
+      </svg>
+      <span class="font-mono text-sm uppercase tracking-wider text-neutral-200">Hyperquity</span>
+      <span class="text-xs text-neutral-500">· Coins with a leveraged trade inside</span>
+    </div>
+    <div class="flex flex-wrap items-center gap-6 text-xs font-mono">
+      <a href="/explore" class="hover:text-white transition">Explore</a>
+      <a href="/launch" class="hover:text-white transition">Launch</a>
+      <a href="/stats" class="hover:text-white transition">Stats</a>
+      <a href="/activity" class="hover:text-white transition">Activity</a>
+      <a href="/docs" class="hover:text-white transition">Docs</a>
+      <a href="/brand" class="hover:text-white transition">Brand</a>
+      <a href="https://x.com/hyperquity" target="_blank" class="hover:text-white transition">@hyperquity</a>
+    </div>
+  </div>
+</footer>
+
+  <script src="/assets/js/wallet.js"></script>
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

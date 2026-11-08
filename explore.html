@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explore · Hyperquity</title>
+  <meta name="description" content="Explore all Solana coins bound to Hyperliquid perpetual futures. Live PnL, margin balance, and buyback volume.">
+  <meta property="og:title" content="Explore · Hyperquity">
+  <meta property="og:description" content="Explore all Solana coins bound to Hyperliquid perpetual futures. Live PnL, margin balance, and buyback volume.">
+  <meta property="og:site_name" content="Hyperquity">
+  <meta property="og:url" content="https://hyperquity.fun">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@hyperquity">
+  <meta name="twitter:title" content="Explore · Hyperquity">
+  <meta name="twitter:description" content="Explore all Solana coins bound to Hyperliquid perpetual futures. Live PnL, margin balance, and buyback volume.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%2338bdf8'/></svg>">
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body class="min-h-screen flex flex-col bg-[#020713] text-[#f5f5f5]">
+  <header class="sticky top-0 z-40 border-b border-neutral-800/80 bg-[#020713]/85 backdrop-blur-md">
+  <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-4 sm:py-5">
+    <a class="flex shrink-0 cursor-pointer items-center gap-2.5 transition hover:opacity-75" href="/">
+      <svg aria-hidden="true" class="shrink-0" height="28" viewBox="0 0 100 100" width="28">
+        <defs>
+          <mask height="100" id="hq-cut-nav" maskUnits="userSpaceOnUse" width="100" x="0" y="0">
+            <rect fill="#fff" height="100" width="100"></rect>
+            <path d="M-4 52 C18 54 30 36 50 38 S80 22 104 12" fill="none" stroke="#000" stroke-linecap="round" stroke-width="7"></path>
+            <path d="M-4 72 C18 74 30 56 50 58 S80 42 104 32" fill="none" stroke="#000" stroke-linecap="round" stroke-width="7"></path>
+          </mask>
+        </defs>
+        <g mask="url(#hq-cut-nav)">
+          <circle cx="47" cy="47" fill="#38bdf8" r="41"></circle>
+          <path d="M70 70 L90 90" stroke="#38bdf8" stroke-linecap="round" stroke-width="13"></path>
+        </g>
+      </svg>
+      <span class="font-[family-name:var(--font-headline)] text-2xl font-bold uppercase tracking-[0.14em] text-neutral-50">
+        Hyperquity
+      </span>
+    </a>
+    <div class="ml-auto flex shrink-0 items-center gap-1 sm:gap-3">
+      <nav aria-label="Top" class="hidden items-center sm:flex gap-1">
+        <a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-cyan-400 font-bold" href="/explore">Explore</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-neutral-300 hover:text-neutral-50" href="/launch">Launch</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-neutral-300 hover:text-neutral-50" href="/stats">Stats</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-neutral-300 hover:text-neutral-50" href="/activity">Activity</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-neutral-300 hover:text-neutral-50" href="/docs">Docs</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold transition text-neutral-300 hover:text-neutral-50" href="/brand">Brand</a>
+<a class="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-semibold text-neutral-300 transition hover:text-neutral-50" href="https://x.com/hyperquity" target="_blank" rel="noreferrer">Twitter</a>
+
+      </nav>
+      <button class="wallet-connect-btn h-9 cursor-pointer whitespace-nowrap rounded-full border border-neutral-700 bg-[#050f22] px-3.5 font-mono text-[12.8px] text-white transition hover:border-cyan-400 hover:bg-white/[0.05] flex items-center">
+        Connect wallet
+      </button>
+      <button id="mobile-menu-btn" class="sm:hidden p-2 text-neutral-400 hover:text-white" aria-label="Menu">
+        <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="sm:hidden hidden border-t border-neutral-800 bg-[#050f22] px-4 py-3 space-y-2">
+    <a class="block py-2 text-sm font-semibold text-cyan-400 font-bold" href="/explore">Explore</a>
+<a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-neutral-50" href="/launch">Launch</a>
+<a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-neutral-50" href="/stats">Stats</a>
+<a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-neutral-50" href="/activity">Activity</a>
+<a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-neutral-50" href="/docs">Docs</a>
+<a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-neutral-50" href="/brand">Brand</a>
+<a class="block py-2 text-sm font-semibold text-neutral-300 hover:text-white" href="https://x.com/hyperquity" target="_blank">Twitter</a>
+
+  </div>
+</header>
+  
+  <main class="flex flex-1 flex-col pb-16">
+    
+    <div class="mx-auto w-full max-w-6xl px-6 pt-8">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500">Explorer</p>
+          <h1 class="mt-2 font-[family-name:var(--font-headline)] text-[34px] font-bold leading-none text-neutral-50 sm:text-[40px]">
+            Explore Hyperquity Coins
+          </h1>
+          <p class="mt-3 max-w-2xl text-sm text-neutral-300">
+            Browse live Solana coins bound to Hyperliquid perpetuals. Track live position PnL, lifetime buybacks, and trading volume.
+          </p>
+        </div>
+        <a href="/launch" class="inline-flex h-10 items-center justify-center rounded-xl bg-cyan-400 px-5 text-xs font-mono font-bold uppercase tracking-wider text-[#020713] hover:bg-cyan-300 transition">
+          Launch Coin
+        </a>
+      </div>
+
+      <!-- Search & Filter Controls -->
+      <div class="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+        <div class="relative flex-1 max-w-md">
+          <input id="token-search-input" type="text" placeholder="Search by name, symbol, or perp (e.g. BTC, SOL)..."
+                 class="w-full h-11 rounded-full border border-neutral-800 bg-[#09172e] px-4 pl-10 text-sm text-white placeholder-neutral-500 focus:border-cyan-500 focus:outline-none">
+          <svg class="absolute left-3.5 top-3 size-4 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 font-mono text-xs">
+          <button class="explore-filter-tab px-4 py-2 rounded-full bg-white text-[#020713] font-semibold transition" data-filter="all">All</button>
+          <button class="explore-filter-tab px-4 py-2 rounded-full bg-[#09172e] text-neutral-300 hover:text-white transition" data-filter="trending">Trending</button>
+          <button class="explore-filter-tab px-4 py-2 rounded-full bg-[#09172e] text-neutral-300 hover:text-white transition" data-filter="longs">Longs</button>
+          <button class="explore-filter-tab px-4 py-2 rounded-full bg-[#09172e] text-neutral-300 hover:text-white transition" data-filter="shorts">Shorts</button>
+          <button class="explore-filter-tab px-4 py-2 rounded-full bg-[#09172e] text-neutral-300 hover:text-white transition" data-filter="high">10x-20x</button>
+        </div>
+      </div>
+
+      <!-- Token Grid -->
+      <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        
+        <div class="token-explore-card overflow-hidden rounded-2xl border border-neutral-800 bg-[#09172e] p-5 hover:border-neutral-700 transition flex flex-col justify-between"
+             data-name="Hyperquity" data-symbol="HYPERQUITY" data-direction="long" data-leverage="10" data-category="crypto" data-trending="true">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <div class="flex items-center gap-3">
+                <div class="size-11 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-xl">
+                  ⚡
+                </div>
+                <div>
+                  <h3 class="font-bold text-neutral-100 text-base flex items-center gap-2">
+                    Hyperquity
+                    <span class="font-mono text-xs text-neutral-400">$HYPERQUITY</span>
+                  </h3>
+                  <div class="mt-1 flex items-center gap-2">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">10x LONG HYPE</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 py-3 border-y border-neutral-800/80 font-mono text-xs">
+              <div>
+                <span class="text-neutral-500">Price / MC</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$0.0482 · $482,000</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Unrealized PnL</span>
+                <div class="text-emerald-400 font-semibold mt-0.5">+48.2%</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">24h Volume</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$182,500</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Buyback & Burn</span>
+                <div class="text-cyan-400 font-semibold mt-0.5">$28,450</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-2 flex items-center gap-2">
+            <a href="/launch" class="flex-1 py-2 rounded-xl bg-[#0e2448] hover:bg-[#143264] border border-neutral-700 text-xs font-mono font-semibold text-center text-white transition">
+              Trade Coin
+            </a>
+            <a href="https://app.hyperliquid.xyz" target="_blank" class="px-3 py-2 rounded-xl border border-neutral-800 hover:border-neutral-600 text-xs font-mono text-neutral-400 hover:text-white transition" title="Inspect on Hyperliquid">
+              Perp ↗
+            </a>
+          </div>
+        </div>
+        
+        <div class="token-explore-card overflow-hidden rounded-2xl border border-neutral-800 bg-[#09172e] p-5 hover:border-neutral-700 transition flex flex-col justify-between"
+             data-name="HyperSol" data-symbol="HSOL" data-direction="long" data-leverage="20" data-category="crypto" data-trending="true">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <div class="flex items-center gap-3">
+                <div class="size-11 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-xl">
+                  ◎
+                </div>
+                <div>
+                  <h3 class="font-bold text-neutral-100 text-base flex items-center gap-2">
+                    HyperSol
+                    <span class="font-mono text-xs text-neutral-400">$HSOL</span>
+                  </h3>
+                  <div class="mt-1 flex items-center gap-2">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">20x LONG SOL</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 py-3 border-y border-neutral-800/80 font-mono text-xs">
+              <div>
+                <span class="text-neutral-500">Price / MC</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$0.0214 · $214,000</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Unrealized PnL</span>
+                <div class="text-emerald-400 font-semibold mt-0.5">+34.1%</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">24h Volume</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$94,200</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Buyback & Burn</span>
+                <div class="text-cyan-400 font-semibold mt-0.5">$12,180</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-2 flex items-center gap-2">
+            <a href="/launch" class="flex-1 py-2 rounded-xl bg-[#0e2448] hover:bg-[#143264] border border-neutral-700 text-xs font-mono font-semibold text-center text-white transition">
+              Trade Coin
+            </a>
+            <a href="https://app.hyperliquid.xyz" target="_blank" class="px-3 py-2 rounded-xl border border-neutral-800 hover:border-neutral-600 text-xs font-mono text-neutral-400 hover:text-white transition" title="Inspect on Hyperliquid">
+              Perp ↗
+            </a>
+          </div>
+        </div>
+        
+        <div class="token-explore-card overflow-hidden rounded-2xl border border-neutral-800 bg-[#09172e] p-5 hover:border-neutral-700 transition flex flex-col justify-between"
+             data-name="Hyper Cat" data-symbol="HCAT" data-direction="long" data-leverage="5" data-category="crypto" data-trending="true">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <div class="flex items-center gap-3">
+                <div class="size-11 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-xl">
+                  🐱
+                </div>
+                <div>
+                  <h3 class="font-bold text-neutral-100 text-base flex items-center gap-2">
+                    Hyper Cat
+                    <span class="font-mono text-xs text-neutral-400">$HCAT</span>
+                  </h3>
+                  <div class="mt-1 flex items-center gap-2">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">5x LONG BTC</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 py-3 border-y border-neutral-800/80 font-mono text-xs">
+              <div>
+                <span class="text-neutral-500">Price / MC</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$0.0095 · $95,000</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Unrealized PnL</span>
+                <div class="text-emerald-400 font-semibold mt-0.5">+19.8%</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">24h Volume</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$67,400</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Buyback & Burn</span>
+                <div class="text-cyan-400 font-semibold mt-0.5">$8,920</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-2 flex items-center gap-2">
+            <a href="/launch" class="flex-1 py-2 rounded-xl bg-[#0e2448] hover:bg-[#143264] border border-neutral-700 text-xs font-mono font-semibold text-center text-white transition">
+              Trade Coin
+            </a>
+            <a href="https://app.hyperliquid.xyz" target="_blank" class="px-3 py-2 rounded-xl border border-neutral-800 hover:border-neutral-600 text-xs font-mono text-neutral-400 hover:text-white transition" title="Inspect on Hyperliquid">
+              Perp ↗
+            </a>
+          </div>
+        </div>
+        
+        <div class="token-explore-card overflow-hidden rounded-2xl border border-neutral-800 bg-[#09172e] p-5 hover:border-neutral-700 transition flex flex-col justify-between"
+             data-name="Short FUD" data-symbol="SFUD" data-direction="short" data-leverage="10" data-category="crypto" data-trending="false">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <div class="flex items-center gap-3">
+                <div class="size-11 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-xl">
+                  🔻
+                </div>
+                <div>
+                  <h3 class="font-bold text-neutral-100 text-base flex items-center gap-2">
+                    Short FUD
+                    <span class="font-mono text-xs text-neutral-400">$SFUD</span>
+                  </h3>
+                  <div class="mt-1 flex items-center gap-2">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-rose-500/10 text-rose-400 border border-rose-500/30">10x SHORT ETH</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 py-3 border-y border-neutral-800/80 font-mono text-xs">
+              <div>
+                <span class="text-neutral-500">Price / MC</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$0.0042 · $42,000</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Unrealized PnL</span>
+                <div class="text-emerald-400 font-semibold mt-0.5">+15.4%</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">24h Volume</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$41,800</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Buyback & Burn</span>
+                <div class="text-cyan-400 font-semibold mt-0.5">$5,640</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-2 flex items-center gap-2">
+            <a href="/launch" class="flex-1 py-2 rounded-xl bg-[#0e2448] hover:bg-[#143264] border border-neutral-700 text-xs font-mono font-semibold text-center text-white transition">
+              Trade Coin
+            </a>
+            <a href="https://app.hyperliquid.xyz" target="_blank" class="px-3 py-2 rounded-xl border border-neutral-800 hover:border-neutral-600 text-xs font-mono text-neutral-400 hover:text-white transition" title="Inspect on Hyperliquid">
+              Perp ↗
+            </a>
+          </div>
+        </div>
+        
+        <div class="token-explore-card overflow-hidden rounded-2xl border border-neutral-800 bg-[#09172e] p-5 hover:border-neutral-700 transition flex flex-col justify-between"
+             data-name="Gold Perp" data-symbol="PAXG" data-direction="long" data-leverage="5" data-category="commodities" data-trending="false">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <div class="flex items-center gap-3">
+                <div class="size-11 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-xl">
+                  🪙
+                </div>
+                <div>
+                  <h3 class="font-bold text-neutral-100 text-base flex items-center gap-2">
+                    Gold Perp
+                    <span class="font-mono text-xs text-neutral-400">$PAXG</span>
+                  </h3>
+                  <div class="mt-1 flex items-center gap-2">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">5x LONG GOLD</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 py-3 border-y border-neutral-800/80 font-mono text-xs">
+              <div>
+                <span class="text-neutral-500">Price / MC</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$0.0312 · $312,000</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Unrealized PnL</span>
+                <div class="text-emerald-400 font-semibold mt-0.5">+8.2%</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">24h Volume</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$31,200</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Buyback & Burn</span>
+                <div class="text-cyan-400 font-semibold mt-0.5">$3,210</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-2 flex items-center gap-2">
+            <a href="/launch" class="flex-1 py-2 rounded-xl bg-[#0e2448] hover:bg-[#143264] border border-neutral-700 text-xs font-mono font-semibold text-center text-white transition">
+              Trade Coin
+            </a>
+            <a href="https://app.hyperliquid.xyz" target="_blank" class="px-3 py-2 rounded-xl border border-neutral-800 hover:border-neutral-600 text-xs font-mono text-neutral-400 hover:text-white transition" title="Inspect on Hyperliquid">
+              Perp ↗
+            </a>
+          </div>
+        </div>
+        
+        <div class="token-explore-card overflow-hidden rounded-2xl border border-neutral-800 bg-[#09172e] p-5 hover:border-neutral-700 transition flex flex-col justify-between"
+             data-name="Doge Hyper" data-symbol="DOGEH" data-direction="long" data-leverage="20" data-category="crypto" data-trending="true">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <div class="flex items-center gap-3">
+                <div class="size-11 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-xl">
+                  🐕
+                </div>
+                <div>
+                  <h3 class="font-bold text-neutral-100 text-base flex items-center gap-2">
+                    Doge Hyper
+                    <span class="font-mono text-xs text-neutral-400">$DOGEH</span>
+                  </h3>
+                  <div class="mt-1 flex items-center gap-2">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">20x LONG DOGE</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 py-3 border-y border-neutral-800/80 font-mono text-xs">
+              <div>
+                <span class="text-neutral-500">Price / MC</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$0.0089 · $89,000</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Unrealized PnL</span>
+                <div class="text-rose-400 font-semibold mt-0.5">-4.1%</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">24h Volume</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$88,500</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Buyback & Burn</span>
+                <div class="text-cyan-400 font-semibold mt-0.5">$9,840</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-2 flex items-center gap-2">
+            <a href="/launch" class="flex-1 py-2 rounded-xl bg-[#0e2448] hover:bg-[#143264] border border-neutral-700 text-xs font-mono font-semibold text-center text-white transition">
+              Trade Coin
+            </a>
+            <a href="https://app.hyperliquid.xyz" target="_blank" class="px-3 py-2 rounded-xl border border-neutral-800 hover:border-neutral-600 text-xs font-mono text-neutral-400 hover:text-white transition" title="Inspect on Hyperliquid">
+              Perp ↗
+            </a>
+          </div>
+        </div>
+        
+        <div class="token-explore-card overflow-hidden rounded-2xl border border-neutral-800 bg-[#09172e] p-5 hover:border-neutral-700 transition flex flex-col justify-between"
+             data-name="Sui Bull" data-symbol="SBULL" data-direction="long" data-leverage="15" data-category="crypto" data-trending="true">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <div class="flex items-center gap-3">
+                <div class="size-11 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-xl">
+                  💧
+                </div>
+                <div>
+                  <h3 class="font-bold text-neutral-100 text-base flex items-center gap-2">
+                    Sui Bull
+                    <span class="font-mono text-xs text-neutral-400">$SBULL</span>
+                  </h3>
+                  <div class="mt-1 flex items-center gap-2">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">15x LONG SUI</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 py-3 border-y border-neutral-800/80 font-mono text-xs">
+              <div>
+                <span class="text-neutral-500">Price / MC</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$0.0156 · $156,000</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Unrealized PnL</span>
+                <div class="text-emerald-400 font-semibold mt-0.5">+27.8%</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">24h Volume</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$72,100</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Buyback & Burn</span>
+                <div class="text-cyan-400 font-semibold mt-0.5">$11,400</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-2 flex items-center gap-2">
+            <a href="/launch" class="flex-1 py-2 rounded-xl bg-[#0e2448] hover:bg-[#143264] border border-neutral-700 text-xs font-mono font-semibold text-center text-white transition">
+              Trade Coin
+            </a>
+            <a href="https://app.hyperliquid.xyz" target="_blank" class="px-3 py-2 rounded-xl border border-neutral-800 hover:border-neutral-600 text-xs font-mono text-neutral-400 hover:text-white transition" title="Inspect on Hyperliquid">
+              Perp ↗
+            </a>
+          </div>
+        </div>
+        
+        <div class="token-explore-card overflow-hidden rounded-2xl border border-neutral-800 bg-[#09172e] p-5 hover:border-neutral-700 transition flex flex-col justify-between"
+             data-name="Avax Rider" data-symbol="ARIDE" data-direction="long" data-leverage="5" data-category="crypto" data-trending="false">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <div class="flex items-center gap-3">
+                <div class="size-11 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-xl">
+                  🔺
+                </div>
+                <div>
+                  <h3 class="font-bold text-neutral-100 text-base flex items-center gap-2">
+                    Avax Rider
+                    <span class="font-mono text-xs text-neutral-400">$ARIDE</span>
+                  </h3>
+                  <div class="mt-1 flex items-center gap-2">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">5x LONG AVAX</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 py-3 border-y border-neutral-800/80 font-mono text-xs">
+              <div>
+                <span class="text-neutral-500">Price / MC</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$0.0068 · $68,000</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Unrealized PnL</span>
+                <div class="text-emerald-400 font-semibold mt-0.5">+3.4%</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">24h Volume</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$23,400</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Buyback & Burn</span>
+                <div class="text-cyan-400 font-semibold mt-0.5">$2,150</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-2 flex items-center gap-2">
+            <a href="/launch" class="flex-1 py-2 rounded-xl bg-[#0e2448] hover:bg-[#143264] border border-neutral-700 text-xs font-mono font-semibold text-center text-white transition">
+              Trade Coin
+            </a>
+            <a href="https://app.hyperliquid.xyz" target="_blank" class="px-3 py-2 rounded-xl border border-neutral-800 hover:border-neutral-600 text-xs font-mono text-neutral-400 hover:text-white transition" title="Inspect on Hyperliquid">
+              Perp ↗
+            </a>
+          </div>
+        </div>
+        
+        <div class="token-explore-card overflow-hidden rounded-2xl border border-neutral-800 bg-[#09172e] p-5 hover:border-neutral-700 transition flex flex-col justify-between"
+             data-name="Link Oracle" data-symbol="LORAC" data-direction="long" data-leverage="10" data-category="crypto" data-trending="false">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <div class="flex items-center gap-3">
+                <div class="size-11 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-xl">
+                  🔗
+                </div>
+                <div>
+                  <h3 class="font-bold text-neutral-100 text-base flex items-center gap-2">
+                    Link Oracle
+                    <span class="font-mono text-xs text-neutral-400">$LORAC</span>
+                  </h3>
+                  <div class="mt-1 flex items-center gap-2">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">10x LONG LINK</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 py-3 border-y border-neutral-800/80 font-mono text-xs">
+              <div>
+                <span class="text-neutral-500">Price / MC</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$0.0189 · $189,000</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Unrealized PnL</span>
+                <div class="text-emerald-400 font-semibold mt-0.5">+11.2%</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">24h Volume</span>
+                <div class="text-neutral-200 font-semibold mt-0.5">$45,600</div>
+              </div>
+              <div>
+                <span class="text-neutral-500">Buyback & Burn</span>
+                <div class="text-cyan-400 font-semibold mt-0.5">$6,320</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-2 flex items-center gap-2">
+            <a href="/launch" class="flex-1 py-2 rounded-xl bg-[#0e2448] hover:bg-[#143264] border border-neutral-700 text-xs font-mono font-semibold text-center text-white transition">
+              Trade Coin
+            </a>
+            <a href="https://app.hyperliquid.xyz" target="_blank" class="px-3 py-2 rounded-xl border border-neutral-800 hover:border-neutral-600 text-xs font-mono text-neutral-400 hover:text-white transition" title="Inspect on Hyperliquid">
+              Perp ↗
+            </a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  </main>
+
+  <footer class="mt-auto border-t border-neutral-800/80 bg-[#020713] py-10 text-neutral-400">
+  <div class="mx-auto max-w-6xl px-4 flex flex-col sm:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <svg aria-hidden="true" class="shrink-0" height="22" viewBox="0 0 100 100" width="22">
+        <g mask="url(#hq-cut-nav)">
+          <circle cx="47" cy="47" fill="#38bdf8" r="41"></circle>
+          <path d="M70 70 L90 90" stroke="#38bdf8" stroke-linecap="round" stroke-width="13"></path>
+        </g>
+      </svg>
+      <span class="font-mono text-sm uppercase tracking-wider text-neutral-200">Hyperquity</span>
+      <span class="text-xs text-neutral-500">· Coins with a leveraged trade inside</span>
+    </div>
+    <div class="flex flex-wrap items-center gap-6 text-xs font-mono">
+      <a href="/explore" class="hover:text-white transition">Explore</a>
+      <a href="/launch" class="hover:text-white transition">Launch</a>
+      <a href="/stats" class="hover:text-white transition">Stats</a>
+      <a href="/activity" class="hover:text-white transition">Activity</a>
+      <a href="/docs" class="hover:text-white transition">Docs</a>
+      <a href="/brand" class="hover:text-white transition">Brand</a>
+      <a href="https://x.com/hyperquity" target="_blank" class="hover:text-white transition">@hyperquity</a>
+    </div>
+  </div>
+</footer>
+
+  <script src="/assets/js/wallet.js"></script>
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

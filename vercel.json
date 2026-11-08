@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/explore", "destination": "/explore.html" },
+    { "source": "/launch", "destination": "/launch.html" },
+    { "source": "/docs", "destination": "/docs.html" },
+    { "source": "/stats", "destination": "/stats.html" },
+    { "source": "/activity", "destination": "/activity.html" },
+    { "source": "/brand", "destination": "/brand.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" }
+      ]
+    }
+  ]
+}
