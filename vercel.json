@@ -7,7 +7,9 @@
     { "source": "/docs", "destination": "/docs.html" },
     { "source": "/stats", "destination": "/stats.html" },
     { "source": "/activity", "destination": "/activity.html" },
-    { "source": "/brand", "destination": "/brand.html" }
+    { "source": "/brand", "destination": "/brand.html" },
+    { "source": "/opengraph-image", "destination": "/opengraph-image.png" },
+    { "source": "/api/:path*", "destination": "https://tryequity.fun/api/:path*" }
   ],
   "headers": [
     {
